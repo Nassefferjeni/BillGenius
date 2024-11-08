@@ -2,7 +2,7 @@
 
 **A Modern Invoicing Application**
 
-InvoiceZen is a powerful and intuitive invoicing application built with Next.js, Tailwind CSS, and Xata. It allows you to create, manage, and track your invoices efficiently.
+BillGenius is a powerful and intuitive invoicing application built with Next.js, Tailwind CSS, and Xata. It allows you to create, manage, and track your invoices efficiently.
 
 **Key Features**
 
