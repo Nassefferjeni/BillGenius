@@ -57,6 +57,7 @@ export default function PaymentPage({
     if (isSuccess && data?.status !== "paid") {
       paymentSuccessfullMutate();
     }
+    /* eslint-disable react-hooks/exhaustive-deps */
   }, [isSuccess, data]);
 
   async function onSubmit() {

@@ -263,7 +263,8 @@ export default function SignInPage() {
             </SignIn.Action>
           </SignIn.Strategy>
           <p className="text-center text-sm text-neutral-500">
-            Don&apos;t have an account?{" "}
+            Don&apos;t have an account?
+            {/* eslint-disable @next/next/no-html-link-for-pages */}
             <a
               href="/sign-up"
               className="rounded px-1 py-0.5 text-neutral-700 outline-none hover:bg-neutral-100 focus-visible:bg-neutral-100"

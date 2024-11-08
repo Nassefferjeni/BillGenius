@@ -1,11 +1,5 @@
 import React from "react";
-import {
-  ClerkProvider,
-  SignInButton,
-  SignedIn,
-  SignedOut,
-  UserButton,
-} from "@clerk/nextjs";
+import { SignInButton, SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 import Container from "@/components/Container";
 import Link from "next/link";
 import { OrganizationSwitcher } from "@clerk/nextjs";

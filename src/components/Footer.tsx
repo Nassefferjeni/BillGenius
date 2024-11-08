@@ -1,13 +1,5 @@
 import React from "react";
-import {
-  ClerkProvider,
-  SignInButton,
-  SignedIn,
-  SignedOut,
-  UserButton,
-} from "@clerk/nextjs";
 import Container from "@/components/Container";
-import Link from "next/link";
 
 function Footer() {
   return (
