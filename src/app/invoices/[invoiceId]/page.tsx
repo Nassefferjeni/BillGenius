@@ -6,7 +6,7 @@ export default async function Home({
 }: {
   params: { invoiceId: string };
 }) {
-  const { invoiceId: invoiceIdStr } = await params;
+  const { invoiceId: invoiceIdStr } = params;
   const invoiceId = parseInt(invoiceIdStr);
   const authResult = await auth();
   const { userId, orgId } = authResult;
