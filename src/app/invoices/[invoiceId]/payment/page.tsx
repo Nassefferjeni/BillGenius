@@ -1,28 +1,32 @@
 import PaymentPage from "./PaymentPage";
 
-export default async function Payment({
+const Page = async ({
   params,
   searchParams,
 }: {
-  params: { invoiceId: string };
-  searchParams: { status: string; session_id: string };
-}) {
-  const { invoiceId: invoiceIdStr } = await params;
-  const invoiceId = parseInt(invoiceIdStr);
+  params: Promise<{ invoiceId: string }>;
+  searchParams: Promise<{ status: string; session_id: string }>;
+}) => {
+  const invoiceId = (await params).invoiceId;
+  const invoiceIdNumber = parseInt(invoiceId);
+  const { session_id: sessionId, status } = await searchParams;
 
-  if (isNaN(invoiceId)) {
+  if (isNaN(invoiceIdNumber)) {
     throw new Error(`Invoice ID must be a number`);
   }
 
-  const awaitedParams = await searchParams;
-  const sessionId = awaitedParams.session_id;
+  if (!invoiceIdNumber || !status) {
+    return null;
+  }
 
   return (
     <PaymentPage
-      invoiceId={invoiceId}
-      isSuccess={awaitedParams.status === "success" && !!sessionId}
-      isCancelled={awaitedParams.status === "canceled" && !!sessionId}
-      isError={awaitedParams.status === "success" && !sessionId}
+      invoiceId={invoiceIdNumber}
+      isSuccess={status === "success" && !!sessionId}
+      isCancelled={status === "canceled" && !!sessionId}
+      isError={status === "success" && !sessionId}
     />
   );
-}
+};
+
+export default Page;

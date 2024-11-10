@@ -1,23 +1,23 @@
 import { auth } from "@clerk/nextjs/server";
 import InvoicePage from "./InvoicePage";
 
-export default async function Home({
-  params,
-}: {
-  params: { invoiceId: string };
-}) {
-  const { invoiceId: invoiceIdStr } = params;
-  const invoiceId = parseInt(invoiceIdStr);
+const Page = async ({ params }: { params: Promise<{ invoiceId: string }> }) => {
+  const invoiceId = (await params).invoiceId;
+  const invoiceIdNumber = parseInt(invoiceId);
   const authResult = await auth();
   const { userId, orgId } = authResult;
 
-  if (isNaN(invoiceId)) {
+  if (isNaN(invoiceIdNumber)) {
     throw new Error(`Invoice ID must be a number`);
   }
 
-  if (!invoiceId) {
+  if (!invoiceIdNumber) {
     return null;
   }
 
-  return <InvoicePage invoiceId={invoiceId} userId={userId} orgId={orgId} />;
-}
+  return (
+    <InvoicePage invoiceId={invoiceIdNumber} userId={userId} orgId={orgId} />
+  );
+};
+
+export default Page;
